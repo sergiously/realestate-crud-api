@@ -1,0 +1,49 @@
+services:
+  express-api-server:
+    image: node:20-alpine
+    container_name: express-api-server
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile-debug
+    command: npm run dev
+    env_file:
+      - ./.env/dev/node.env
+    depends_on:
+      postgresdb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    expose:
+      - "3000"
+    ports:
+      - 8080:3000
+      - 9229:9229
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 128M
+    memswap_limit: 1G
+
+  postgresdb:
+    image: postgres:16-alpine
+    container_name: postgresdb
+    ports:
+      - 5433:5432
+    restart: always
+    shm_size: 128mb
+    env_file:
+      - ./.env/dev/postgre.env
+    volumes:
+      - ../migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_APP_USER}"]
+  
+  redis:
+    image: redis:alpine
+    restart: always
+    expose:
+      - 6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]

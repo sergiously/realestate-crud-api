@@ -1,0 +1,1518 @@
+{
+  "openapi":"3.0.0",
+  "info":{
+    "version":"1.0.0",
+    "title":"Real Estate CRUD API",
+    "description":"Basic backend API REST CRUD themed on real estate listings",
+    "termsOfService":"http://swagger.io/terms/",
+    "contact":{
+      "name":"Sergio N. Raggio",
+      "email":"sergio.nr92@gmail.com",
+      "url":"https://www.linkedin.com/in/sergionicolasraggio"
+    },
+    "license":{
+      "name":"GNU GPLv3",
+      "url":"https://choosealicense.com/licenses/gpl-3.0/"
+    }
+  },
+  "servers":[
+    {
+      "url":"http://localhost:8080/"
+    }
+  ],
+  "paths":{
+    "v1/auth/login":{
+      "post":{
+        "summary":"Generates an access token",
+        "description":"Generates an access token based on a client ID and a client secret",
+        "operationId":"login",
+        "requestBody":{
+          "description":"ID and secret key pair",
+          "required":true,
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/Login"
+              },
+              "examples": {
+                "Login as Admin": {
+                  "value": {
+                    "clientId": "E4Uzsjr1DNYIT3k50bxB5jEfO56WzgWh",
+                    "clientSecret": "Yu2xFzldqavqCxOcfrzg4oud2LmrnL9FO9HOhlAWDBh1lV9kjUvtnquogX9EhcY1"
+                  }
+                },
+                "Login as read-only user": {
+                  "value": {
+                    "clientId": "sD5lnJ8Uz6dfdqFhxyVJc1pFnxBjGIDq",
+                    "clientSecret": "kFvZkcTui6icniNuRv1rNBFzUQ5VcmI1Jgy4Cz25bG9DC3xBNhSGakXWdMNlWNEG"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "200":{
+            "summary":"Successful response",
+            "description":"Login successful response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/LoginResponseSuccess"
+                },
+                "examples": {
+                  "Login as Admin": {
+                    "value": {
+                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwic2NvcGVzIjpbInJlYWQucmVhbC1lc3RhdGUtcG9zdCIsIndyaXRlLnJlYWwtZXN0YXRlLXBvc3QiXSwiaWF0IjoxNzIwOTc0MTM2LCJleHAiOjE3MjA5NzUwMzYsInN1YiI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwianRpIjoiMTcyMDk3NDEzNjU4MCJ9.dkMHdi2bBDbudPp5VWz00E7W3i-7TkbIm3l4cJSncks",
+                      "scopes": [
+                          "read.real-estate-post",
+                          "write.real-estate-post"
+                      ],
+                      "expiresIn": "900000"
+                    }
+                  },
+                  "Login as read-only user": {
+                    "value": {
+                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwic2NvcGVzIjpbInJlYWQucmVhbC1lc3RhdGUtcG9zdCIsIndyaXRlLnJlYWwtZXN0YXRlLXBvc3QiXSwiaWF0IjoxNzIwOTc0MTM2LCJleHAiOjE3MjA5NzUwMzYsInN1YiI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwianRpIjoiMTcyMDk3NDEzNjU4MCJ9.dkMHdi2bBDbudPp5VWz00E7W3i-7TkbIm3l4cJSncks",
+                      "scopes": [
+                          "read.real-estate-post"
+                      ],
+                      "expiresIn": "900000"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "summary":"Invalid input object",
+            "description":"Invalid input object response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Invalid request"
+                  }
+                }
+              }
+            }
+          },
+          "403":{
+            "summary":"Invalid credentials response",
+            "description":"Login invalid credentials response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Invalid credentials"
+                  }
+                }
+              }
+            }
+          },
+          "default":{
+            "summary":"Unexpected error",
+            "description":"Unexpected error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Error"
+                },
+                "example": {
+                  "value": {
+                    "message": "Internal server error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1/auth/logout":{
+      "post":{
+        "summary":"Blacklists an access token",
+        "description":"Blacklists an access token",
+        "operationId":"logout",
+        "security":[
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses":{
+          "200":{
+            "summary":"Successful response",
+            "description":"Logout successful response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Token invalidated successfully"
+                  }
+                }
+              }
+            }
+          },
+          "401":{
+            "summary":"Unauthorized response",
+            "description":"Unauthorized response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "422":{
+            "summary":"Logout failed response",
+            "description":"Logout failed response (could not invalidate bearer token)",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Could not invalidate bearer token"
+                  }
+                }
+              }
+            }
+          },
+          "default":{
+            "summary":"Unexpected error",
+            "description":"Unexpected error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Error"
+                },
+                "example": {
+                  "value": {
+                    "message": "Internal server error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1/real-estate-listing":{
+      "get":{
+        "summary":"Gets a list of multiple real estate postings",
+        "description":"Gets a list of multiple active real estate postings with their details (filter, pagination and ordering based on search query params)",
+        "operationId":"searchPosts",
+        "security":[
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters":[
+          {
+            "name":"titleLike",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing said value",
+            "required":false,
+            "schema":{
+              "type":"string",
+              "minLength":1,
+              "maxLength":255
+            },
+            "example": "house"
+          },
+          {
+            "name":"addressLike",
+            "in":"query",
+            "description":"Filter to find real estate post listings whose address contains said value",
+            "required":false,
+            "schema":{
+              "type":"string",
+              "minLength":1,
+              "maxLength":255
+            },
+            "example": "Plomer"
+          },
+          {
+            "name":"minSquareMeters",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing equal or greater square meters than said specified value",
+            "required":false,
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "minimum":1,
+              "maximum":32767
+            },
+            "example": 100
+          },
+          {
+            "name":"maxSquareMeters",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing equal or lesser square meters than said specified value",
+            "required":false,
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "minimum":1,
+              "maximum":32767
+            },
+            "example": 300
+          },
+          {
+            "name":"bedrooms",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing exactly said number of bedrooms based on the value",
+            "required":false,
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "minimum":1,
+              "maximum":32767
+            },
+            "example": 2
+          },
+          {
+            "name":"minBedrooms",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing at least said number of bedrooms based on the value",
+            "required":false,
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "minimum":1,
+              "maximum":32767
+            },
+            "example": 2
+          },
+          {
+            "name":"bathrooms",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing exactly said number of bathrooms based on the value",
+            "required":false,
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "minimum":1,
+              "maximum":32767
+            },
+            "example": 1
+          },
+          {
+            "name":"minBathrooms",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing at least said number of bathrooms based on the value",
+            "required":false,
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "minimum":1,
+              "maximum":32767
+            },
+            "example": 1
+          },
+          {
+            "name":"minLifeQualityIndex",
+            "in":"query",
+            "description":"Filter to find real estate post listings located in an area of at least said value of life quality index (based on https://icv.conicet.gov.ar/)",
+            "required":false,
+            "schema":{
+              "type":"number",
+              "format":"float",
+              "minimum":0,
+              "maximum":10
+            },
+            "example": 6.5
+          },
+          {
+            "name":"maxLifeQualityIndex",
+            "in":"query",
+            "description":"Filter to find real estate post listings located in an area of said maximum value of life quality index (based on https://icv.conicet.gov.ar/)",
+            "required":false,
+            "schema":{
+              "type":"number",
+              "format":"float",
+              "minimum":0,
+              "maximum":10
+            },
+            "example": 8
+          },
+          {
+            "name":"hasPorch",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing (or not) a porch",
+            "required":false,
+            "schema":{
+              "type":"boolean"
+            },
+            "example": false
+          },
+          {
+            "name":"poolType",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing specified pool type by this value. Multiple values can be applied separated by comma",
+            "required":false,
+            "schema":{
+              "type":"array",
+              "items":{
+                "type":"string",
+                "enum":[
+                  "none",
+                  "own",
+                  "community"
+                ]
+              }
+            },
+            "example": "own,community"
+          },
+          {
+            "name":"barbequeArea",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing specified barbeque area type by this value. Multiple values can be applied separated by comma",
+            "required":false,
+            "schema":{
+              "type":"array",
+              "items":{
+                "type":"string",
+                "enum":[
+                  "none",
+                  "own",
+                  "community"
+                ]
+              }
+            },
+            "example": "own,community"
+          },
+          {
+            "name":"parkingSpace",
+            "in":"query",
+            "description":"Filter to find real estate post listings containing specified parking space type by this value. Multiple values can be applied separated by comma",
+            "required":false,
+            "schema":{
+              "type":"array",
+              "items":{
+                "type":"string",
+                "enum":[
+                  "none",
+                  "driveway",
+                  "garage"
+                ]
+              }
+            },
+            "example": "none"
+          },
+          {
+            "name":"minCreatedAt",
+            "in":"query",
+            "description":"Filter to find real estate post listings created after said date value",
+            "required":false,
+            "schema":{
+              "type":"string",
+              "format":"date-time"
+            },
+            "example": "2024-02-14T00:00:03.000Z"
+          },
+          {
+            "name":"maxCreatedAt",
+            "in":"query",
+            "description":"Filter to find real estate post listings created before said date value",
+            "required":false,
+            "schema":{
+              "type":"string",
+              "format":"date-time"
+            },
+            "example": "2024-05-03T00:00:03.000Z"
+          },
+          {
+            "name":"minUpdatedAt",
+            "in":"query",
+            "description":"Filter to find real estate post listings updated after said date value",
+            "required":false,
+            "schema":{
+              "type":"string",
+              "format":"date-time"
+            },
+            "example": "2024-02-14T00:00:03.000Z"
+          },
+          {
+            "name":"maxUpdatedAt",
+            "in":"query",
+            "description":"Filter to find real estate post listings updated before said date value",
+            "required":false,
+            "schema":{
+              "type":"string",
+              "format":"date-time"
+            },
+            "example": "2024-05-03T00:00:03.000Z"
+          },
+          {
+            "name":"status",
+            "in":"query",
+            "description":"Filter to find real estate post listings in specified current status. Multiple values can be applied separated by comma",
+            "required":false,
+            "schema":{
+              "type":"array",
+              "items":{
+                "type":"string",
+                "enum":[
+                  "ON_SALE",
+                  "ON_HOLD",
+                  "SOLD"
+                ]
+              }
+            },
+            "example": "ON_SALE"
+          },
+          {
+            "name":"currency",
+            "in":"query",
+            "description":"Filter to find real estate post listings valued in specified currency. Multiple values can be applied separated by comma. Mostly used alongside minPrice and maxPrice filters",
+            "required":false,
+            "schema":{
+              "type":"array",
+              "items":{
+                "type":"string",
+                "enum":[
+                  "USD",
+                  "EUR",
+                  "ARS"
+                ]
+              }
+            },
+            "example": "USD"
+          },
+          {
+            "name":"minPrice",
+            "in":"query",
+            "description":"Filter to find real estate post listings valued in specified price or higher",
+            "required":false,
+            "schema":{
+              "type":"number",
+              "format":"float",
+              "minimum":0,
+              "maximum":9999999999.99
+            },
+            "example": 75000
+          },
+          {
+            "name":"maxPrice",
+            "in":"query",
+            "description":"Filter to find real estate post listings valued in specified price or lower",
+            "required":false,
+            "schema":{
+              "type":"number",
+              "format":"float",
+              "minimum":0,
+              "maximum":9999999999.99
+            },
+            "example": 125000
+          },
+          {
+            "name":"limit",
+            "in":"query",
+            "description":"Limit real estate post listings results on specified maximum value. Default value = 10",
+            "required":false,
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "minimum":1,
+              "maximum":100
+            },
+            "example": 10
+          },
+          {
+            "name":"offset",
+            "in":"query",
+            "description":"Pagination index for real estate post listings results. Mostly used alongside limit query parameter. Default value = 0",
+            "required":false,
+            "schema":{
+              "type":"integer",
+              "format":"int32",
+              "minimum":0
+            },
+            "example": 0
+          },
+          {
+            "name":"order_by",
+            "in":"query",
+            "description":"Order real estate post listing results based on specified field. Default value = createdAt",
+            "required":false,
+            "schema":{
+              "type":"string",
+              "enum":[
+                "title",
+                "address",
+                "squareMeters",
+                "bedrooms",
+                "bathrooms",
+                "lifeQualityIndex",
+                "hasPorch",
+                "price",
+                "createdAt",
+                "updatedAt"
+              ]
+            },
+            "example": "createdAt"
+          },
+          {
+            "name":"order_direction",
+            "in":"query",
+            "description":"Order real estate post listing results on specified direction. Default value = desc",
+            "required":false,
+            "schema":{
+              "type":"string",
+              "enum":[
+                "asc",
+                "desc"
+              ]
+            },
+            "example": "desc"
+          }
+        ],
+        "responses":{
+          "200":{
+            "summary":"real estate post listing results",
+            "description":"real estate post listing results based on specified filters",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "examples": {
+                  "Example successful response with limit 3": {
+                    "value": {
+                      "results": [
+                          {
+                              "id": 2,
+                              "title": "House in General Las Heras",
+                              "address": "Neumi Buzzi 46, General Las Heras, Buenos Aires, Argentina",
+                              "squareMeters": 240,
+                              "bedrooms": 2,
+                              "bathrooms": 1,
+                              "lifeQualityIndex": 6.55,
+                              "hasPorch": true,
+                              "poolType": "none",
+                              "barbequeArea": "none",
+                              "parkingSpace": "driveway",
+                              "status": "SOLD",
+                              "price": 47000,
+                              "currency": "USD",
+                              "created_at": "2024-02-15T16:29:03.000Z",
+                              "updated_at": null
+                          },
+                          {
+                              "id": 1,
+                              "title": "Recreational house in Plomer, Buenos Aires (village located along route 6)",
+                              "address": "Los Alamos 300, Plomer, General Las Heras, Buenos Aires, Argentina",
+                              "squareMeters": 1600,
+                              "bedrooms": 3,
+                              "bathrooms": 1,
+                              "lifeQualityIndex": 6.28,
+                              "hasPorch": true,
+                              "poolType": "own",
+                              "barbequeArea": "none",
+                              "parkingSpace": "driveway",
+                              "status": "ON_SALE",
+                              "price": 100000,
+                              "currency": "USD",
+                              "created_at": "2024-02-08T17:09:02.000Z",
+                              "updated_at": null
+                          },
+                          {
+                              "id": 3,
+                              "title": "2 dorm house on sale with pool + guest house in Villars",
+                              "address": "España 400, Villars, General Las Heras, Buenos Aires, Argentina",
+                              "squareMeters": 280,
+                              "bedrooms": 4,
+                              "bathrooms": 3,
+                              "lifeQualityIndex": 6.3,
+                              "hasPorch": true,
+                              "poolType": "own",
+                              "barbequeArea": "own",
+                              "parkingSpace": "driveway",
+                              "status": "ON_HOLD",
+                              "price": 95000,
+                              "currency": "USD",
+                              "created_at": "2024-01-05T22:27:20.000Z",
+                              "updated_at": null
+                          }
+                      ],
+                      "total": 39
+                    }
+                  },
+                  "Example successful no-results response": {
+                    "value": {
+                      "results": [],
+                      "total": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "summary":"Invalid input query params",
+            "description":"Invalid input query params response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Invalid request"
+                  }
+                }
+              }
+            }
+          },
+          "401":{
+            "summary":"Unauthorized response",
+            "description":"Unauthorized response",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "default":{
+            "summary":"Unexpected error",
+            "description":"Unexpected error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Error"
+                },
+                "example": {
+                  "value": {
+                    "message": "Internal server error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post":{
+        "summary":"Inserts a new real estate post listing in the database",
+        "description":"Inserts an active real estate posting with their details on the database",
+        "operationId":"createNewPost",
+        "security":[
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody":{
+          "description":"Real estate object to add to the database",
+          "required":true,
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/RealEstatePost"
+              },
+              "examples":{
+                "House1":{
+                  "summary":"An example of a real estate post of a house on sale",
+                  "description":"An example of a real estate post of a house on sale",
+                  "value":{
+                    "title":"House with pool and barbeque area - Las Heras, Buenos Aires countryside",
+                    "address":"Dorrego 1023, General Las Heras, Buenos Aires, Argentina",
+                    "squareMeters":100,
+                    "bedrooms":3,
+                    "bathrooms":1,
+                    "lifeQualityIndex":6.33,
+                    "hasPorch":true,
+                    "poolType":"own",
+                    "barbequeArea":"own",
+                    "parkingSpace":"driveway",
+                    "status":"ON_SALE",
+                    "currency":"USD",
+                    "price":85000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "summary":"real estate post object created successfully",
+            "description":"real estate post object as it was created",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/SinglePostResponse"
+                },
+                "examples": {
+                  "House1": {
+                    "id": 4,
+                    "title": "House with pool and barbeque area - Las Heras, Buenos Aires countryside",
+                    "address": "Dorrego 1023, General Las Heras, Buenos Aires, Argentina",
+                    "squareMeters": 100,
+                    "bedrooms": 3,
+                    "bathrooms": 1,
+                    "lifeQualityIndex": 6.33,
+                    "hasPorch": true,
+                    "poolType": "own",
+                    "barbequeArea": "own",
+                    "parkingSpace": "driveway",
+                    "status": "ON_SALE",
+                    "price": 85000,
+                    "currency": "USD",
+                    "updated_at": "2024-07-14T23:06:53.862Z",
+                    "created_at": "2024-07-14T23:06:53.862Z",
+                    "isActive": true
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "summary":"Invalid body params",
+            "description":"Invalid body params",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Invalid request"
+                  }
+                }
+              }
+            }
+          },
+          "422":{
+            "summary":"could not create real estate post listing",
+            "description":"could not create real estate post listing",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Could not create post"
+                  }
+                }
+              }
+            }
+          },
+          "default":{
+            "summary":"Unexpected error",
+            "description":"Unexpected error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Error"
+                },
+                "example": {
+                  "value": {
+                    "message": "Internal server error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1/real-estate-listing/{id}":{
+      "get":{
+        "summary":"Gets a single real estate post by its ID",
+        "description":"Gets a single real estate post by its ID",
+        "operationId":"getPost",
+        "security":[
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters":{
+          "in":"path",
+          "name":"id",
+          "description":"ID of the real estate post",
+          "required":true,
+          "schema":{
+            "type":"integer",
+            "format":"int32"
+          },
+          "example": 2
+        },
+        "responses":{
+          "200":{
+            "summary":"real estate post object",
+            "description":"real estate post object",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/SinglePostResponse"
+                },
+                "examples": {
+                  "House1": {
+                    "id": 4,
+                    "title": "House with pool and barbeque area - Las Heras, Buenos Aires countryside",
+                    "address": "Dorrego 1023, General Las Heras, Buenos Aires, Argentina",
+                    "squareMeters": 100,
+                    "bedrooms": 3,
+                    "bathrooms": 1,
+                    "lifeQualityIndex": 6.33,
+                    "hasPorch": true,
+                    "poolType": "own",
+                    "barbequeArea": "own",
+                    "parkingSpace": "driveway",
+                    "status": "ON_SALE",
+                    "price": 85000,
+                    "currency": "USD",
+                    "updated_at": "2024-07-14T23:06:53.862Z",
+                    "created_at": "2024-07-14T23:06:53.862Z",
+                    "isActive": true
+                  }
+                }
+              }
+            }
+          },
+          "204":{
+            "summary":"real estate post listing not found, or marked as inactive",
+            "description":"real estate post listing not found, or marked as inactive"
+          },
+          "400":{
+            "summary":"Invalid param",
+            "description":"Invalid param",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Invalid request"
+                  }
+                }
+              }
+            }
+          },
+          "default":{
+            "summary":"Unexpected error",
+            "description":"Unexpected error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch":{
+        "summary":"Updates a single real estate post",
+        "description":"Updates a single real estate post",
+        "operationId":"updatePost",
+        "security":[
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters":{
+          "in":"path",
+          "name":"id",
+          "description":"ID of the real estate post",
+          "required":true,
+          "schema":{
+            "type":"integer",
+            "format":"int32"
+          }
+        },
+        "requestBody":{
+          "description":"Real estate object to patch into the existing one",
+          "required":true,
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/RealEstatePatch"
+              },
+              "examples":{
+                "House1":{
+                  "summary":"An example of a real estate post listing to update",
+                  "description":"An example of a real estate post listing to update. This example is linked to the Post 'House1' example",
+                  "value":{
+                    "squareMeters":80,
+                    "bedrooms":4,
+                    "lifeQualityIndex":6.95,
+                    "hasPorch":false,
+                    "parkingSpace":"garage",
+                    "price":80000
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "200":{
+            "summary":"real estate post listing updated successfully",
+            "description":"complete real estate post listing as it was updated",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Post updated successfully"
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "summary":"Invalid path or body param",
+            "description":"Invalid path or body param",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Invalid request"
+                  }
+                }
+              }
+            }
+          },
+          "422":{
+            "summary":"could not update real estate post",
+            "description":"could not update real estate post",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Could not update post"
+                  }
+                }
+              }
+            }
+          },
+          "default":{
+            "summary":"Unexpected error",
+            "description":"Unexpected error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete":{
+        "summary":"soft deletes a single real estate post",
+        "description":"soft deletes a single real estate post, by marking it as inactive",
+        "operationId":"softDeletePost",
+        "security":[
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters":{
+          "in":"path",
+          "name":"id",
+          "description":"ID of the real estate post",
+          "required":true,
+          "schema":{
+            "type":"integer",
+            "format":"int32"
+          }
+        },
+        "responses":{
+          "200":{
+            "summary":"real estate post listing soft deleted successfully",
+            "description":"real estate post listing was soft deleted successfully (marked as inactive)",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Post deleted successfully"
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "summary":"Invalid path param",
+            "description":"Invalid path param",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Invalid request"
+                  }
+                }
+              }
+            }
+          },
+          "422":{
+            "summary":"could not soft delete real estate post",
+            "description":"could not soft delete real estate post",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/GenericResponse"
+                },
+                "example": {
+                  "value": {
+                    "message": "Could not delete post"
+                  }
+                }
+              }
+            }
+          },
+          "default":{
+            "summary":"Unexpected error",
+            "description":"Unexpected error",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components":{
+    "securitySchemes": {
+        "BearerAuth": {
+            "name": "Authorization",
+            "in": "header",
+            "type": "apiKey",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "description": "Enter your bearer token in the format Bearer <token>"
+        }
+    },
+    "schemas":{
+      "Login":{
+        "type":"object",
+        "required":[
+          "clientId",
+          "clientSecret"
+        ],
+        "properties":{
+          "clientId":{
+            "type":"string",
+            "minLength":1,
+            "maxLength":255,
+            "format":"password"
+          },
+          "clientSecret":{
+            "type":"string",
+            "minLength":1,
+            "maxLength":255,
+            "format":"password"
+          }
+        }
+      },
+      "LoginResponseSuccess":{
+        "type":"object",
+        "required":[
+          "accessToken",
+          "scopes",
+          "expiresIn"
+        ],
+        "properties":{
+          "accessToken":{
+            "type":"string",
+            "format":"password"
+          },
+          "scopes":{
+            "type":"array",
+            "items":{
+              "type":"string",
+              "enum":[
+                "read.real-estate-post",
+                "write.real-estate-post"
+              ]
+            }
+          },
+          "expiresIn":{
+            "type":"integer",
+            "format":"int32",
+            "minimum":1
+          }
+        }
+      },
+      "RealEstatePost":{
+        "type":"object",
+        "required":[
+          "title",
+          "address",
+          "squareMeters",
+          "bedrooms",
+          "bathrooms",
+          "hasPorch",
+          "poolType",
+          "barbequeArea",
+          "parkingSpace",
+          "status",
+          "currency",
+          "price"
+        ],
+        "properties":{
+          "title":{
+            "type":"string",
+            "description":"Real estate post title"
+          },
+          "address":{
+            "type":"string",
+            "description":"Property address"
+          },
+          "squareMeters":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Property total square meters (including covered area and outdoors area)"
+          },
+          "bedrooms":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Quantity of bedrooms that the property has"
+          },
+          "bathrooms":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Quantity of bathrooms that the property has"
+          },
+          "lifeQualityIndex":{
+            "type":"number",
+            "format":"float",
+            "description":"Life quality index (source: https://icv.conicet.gov.ar/ ) of the area where the property is located"
+          },
+          "hasPorch":{
+            "type":"boolean",
+            "description":"Condition indicating if the property has a porch"
+          },
+          "poolType":{
+            "type":"string",
+            "description":"Pool ownership type of the property",
+            "enum":[
+              "none",
+              "own",
+              "community"
+            ]
+          },
+          "barbequeArea":{
+            "type":"string",
+            "description":"Barbeque area ownership type of the property",
+            "enum":[
+              "none",
+              "own",
+              "community"
+            ]
+          },
+          "parkingSpace":{
+            "type":"string",
+            "description":"Type of parking space of the property",
+            "enum":[
+              "none",
+              "driveway",
+              "garage"
+            ]
+          },
+          "status":{
+            "type":"string",
+            "description":"Status of the real estate post listing",
+            "enum":[
+              "ON_SALE",
+              "ON_HOLD",
+              "SOLD"
+            ]
+          },
+          "currency":{
+            "type":"string",
+            "description":"Currency in which the price of the real estate post listing is expressed",
+            "enum":[
+              "USD",
+              "EUR",
+              "ARS"
+            ]
+          },
+          "price":{
+            "type":"number",
+            "format":"int32",
+            "description":"Price of the real estate post listing"
+          }
+        }
+      },
+      "RealEstatePatch":{
+        "type":"object",
+        "properties":{
+          "title":{
+            "type":"string",
+            "description":"Real estate post title"
+          },
+          "address":{
+            "type":"string",
+            "description":"Property address"
+          },
+          "squareMeters":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Property total square meters (including covered area and outdoors area)"
+          },
+          "bedrooms":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Quantity of bedrooms that the property has"
+          },
+          "bathrooms":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Quantity of bathrooms that the property has"
+          },
+          "lifeQualityIndex":{
+            "type":"number",
+            "format":"float",
+            "description":"Life quality index (source: https://icv.conicet.gov.ar/ ) of the area where the property is located"
+          },
+          "hasPorch":{
+            "type":"boolean",
+            "description":"Condition indicating if the property has a porch"
+          },
+          "poolType":{
+            "type":"string",
+            "description":"Pool ownership type of the property",
+            "enum":[
+              "none",
+              "own",
+              "community"
+            ]
+          },
+          "barbequeArea":{
+            "type":"string",
+            "description":"Barbeque area ownership type of the property",
+            "enum":[
+              "none",
+              "own",
+              "community"
+            ]
+          },
+          "parkingSpace":{
+            "type":"string",
+            "description":"Type of parking space of the property",
+            "enum":[
+              "none",
+              "driveway",
+              "garage"
+            ]
+          },
+          "status":{
+            "type":"string",
+            "description":"Status of the real estate post listing",
+            "enum":[
+              "ON_SALE",
+              "ON_HOLD",
+              "SOLD"
+            ]
+          },
+          "currency":{
+            "type":"string",
+            "description":"Currency in which the price of the real estate post listing is expressed",
+            "enum":[
+              "USD",
+              "EUR",
+              "ARS"
+            ]
+          },
+          "price":{
+            "type":"number",
+            "format":"int32",
+            "description":"Price of the real estate post listing"
+          }
+        }
+      },
+      "SinglePostResponse": {
+        "type":"object",
+        "required":[
+          "id",
+          "title",
+          "address",
+          "squareMeters",
+          "bedrooms",
+          "bathrooms",
+          "lifeQualityIndex",
+          "hasPorch",
+          "poolType",
+          "barbequeArea",
+          "parkingSpace",
+          "status",
+          "price",
+          "currency",
+          "updated_at",
+          "created_at",
+          "isActive"
+        ],
+        "properties":{
+          "id":{
+            "type": "integer",
+            "format": "int32",
+            "description": "ID of real estate post listing"
+          },
+          "title":{
+            "type":"string",
+            "description":"Real estate post title"
+          },
+          "address":{
+            "type":"string",
+            "description":"Property address"
+          },
+          "squareMeters":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Property total square meters (including covered area and outdoors area)"
+          },
+          "bedrooms":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Quantity of bedrooms that the property has"
+          },
+          "bathrooms":{
+            "type":"integer",
+            "format":"int32",
+            "description":"Quantity of bathrooms that the property has"
+          },
+          "lifeQualityIndex":{
+            "type":"number",
+            "format":"float",
+            "description":"Life quality index (source: https://icv.conicet.gov.ar/ ) of the area where the property is located"
+          },
+          "hasPorch":{
+            "type":"boolean",
+            "description":"Condition indicating if the property has a porch"
+          },
+          "poolType":{
+            "type":"string",
+            "description":"Pool ownership type of the property",
+            "enum":[
+              "none",
+              "own",
+              "community"
+            ]
+          },
+          "barbequeArea":{
+            "type":"string",
+            "description":"Barbeque area ownership type of the property",
+            "enum":[
+              "none",
+              "own",
+              "community"
+            ]
+          },
+          "parkingSpace":{
+            "type":"string",
+            "description":"Type of parking space of the property",
+            "enum":[
+              "none",
+              "driveway",
+              "garage"
+            ]
+          },
+          "status":{
+            "type":"string",
+            "description":"Status of the real estate post listing",
+            "enum":[
+              "ON_SALE",
+              "ON_HOLD",
+              "SOLD"
+            ]
+          },
+          "currency":{
+            "type":"string",
+            "description":"Currency in which the price of the real estate post listing is expressed",
+            "enum":[
+              "USD",
+              "EUR",
+              "ARS"
+            ]
+          },
+          "price":{
+            "type":"number",
+            "format":"int32",
+            "description":"Price of the real estate post listing"
+          },
+          "created_at":{
+            "type":"string",
+            "format":"date-time",
+            "description":"ISO datetime of the creation of the real estate post listing"
+          },
+          "updated_at":{
+            "type":"string",
+            "format":"date-time",
+            "description":"ISO datetime of the last update datetime of the real estate post listing"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Condition indicating if the real estate post listing is an active record (not being soft-deleted)"
+          }
+        }
+      },
+      "GenericResponse":{
+        "type":"object",
+        "required":[
+          "message"
+        ],
+        "properties":{
+          "message":{
+            "type":"string"
+          }
+        }
+      },
+      "Error":{
+        "type":"object",
+        "required":[
+          "message"
+        ],
+        "properties":{
+          "message":{
+            "type":"string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+USER root
+
+ENV APP_DIR=ts-postgresql-local
+ENV TZ=America/Buenos_Aires
+
+RUN apk update && apk add tzdata bash
+
+WORKDIR /usr/app/${APP_DIR}
+
+COPY package*.json .
+COPY .npmrc ./
+RUN npm install --only=prod
+COPY . .
+
+USER node
