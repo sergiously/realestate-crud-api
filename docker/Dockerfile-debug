@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 USER root
 
-ENV APP_DIR=ts-postgresql-local
+ENV APP_DIR=realestate-crud-api
 ENV TZ=America/Buenos_Aires
 
 RUN apk update && apk add tzdata bash

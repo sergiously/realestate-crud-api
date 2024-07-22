@@ -1,8 +1,4 @@
-import type {
-  Request,
-  Response,
-  NextFunction,
-} from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import type { LoginRequestBody } from '../types/request.types';
 import { INTERNAL_SERVER_ERROR_MESSAGE } from '../constants/errors.constants';
 import authService from '../services/auth.service';
@@ -14,7 +10,11 @@ import authService from '../services/auth.service';
  * @param res - Express response object
  * @param next - Express next function
  */
-const login = async (req: Request<{}, {}, LoginRequestBody>, res: Response, next: NextFunction) => {
+const login = async (
+  req: Request<{}, {}, LoginRequestBody>,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { body } = req;
 
@@ -42,7 +42,9 @@ const logout = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const authorizationHeader = req.headers.authorization;
 
-    const isSuccessful = await authService.logout(authorizationHeader?.split(' ')?.pop());
+    const isSuccessful = await authService.logout(
+      authorizationHeader?.split(' ')?.pop(),
+    );
 
     if (isSuccessful) {
       res.status(200).json({ message: 'Token invalidated successfully' });
@@ -55,8 +57,4 @@ const logout = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-
-export {
-  login,
-  logout,
-};
+export { login, logout };

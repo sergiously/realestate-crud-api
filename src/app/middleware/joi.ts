@@ -1,10 +1,5 @@
 // @ts-nocheck
-import type {
-  Request,
-  Response,
-  NextFunction
-} from 'express';
-
+import type { Request, Response, NextFunction } from 'express';
 
 /**
  * Custom validation input error handler middleware for Express HTTP responses
@@ -13,10 +8,15 @@ import type {
  * @param req - Express request object
  * @param res - Express response object
  * @param next - Express next function
- * 
+ *
  * @returns Express response object, formatted for custom error
  */
-const joiParseError = (err, req: Request, res: Response, next: NextFunction) => {
+const joiParseError = (
+  err,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   if (err && err.error && err.error.isJoi) {
     res.status(400).json({
       message: 'Invalid request',
@@ -30,7 +30,4 @@ const joiParseError = (err, req: Request, res: Response, next: NextFunction) => 
   }
 };
 
-
-export {
-  joiParseError,
-};
+export { joiParseError };

@@ -1,6 +1,6 @@
-import { build } from 'esbuild';
-import { copy } from 'esbuild-plugin-copy';
-import { dependencies } from './package.json';
+const { build } = require('esbuild');
+const { copy } = require('esbuild-plugin-copy');
+const { dependencies } = require('./package.json');
 
 build({
   entryPoints: ['src/app.ts'],
@@ -13,7 +13,7 @@ build({
     copy({
       assets: {
         from: ['./config/**'],
-        to: ['./'],
+        to: ['./config'],
       }
     })
   ]

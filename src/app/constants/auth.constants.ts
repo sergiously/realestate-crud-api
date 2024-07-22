@@ -16,8 +16,4 @@ const ROUTES_TO_SCOPES_MAPPING = {
   'DELETE /v1/real-estate-listing/': SCOPES.REALESTATE_WRITE,
 };
 
-
-export {
-  SCOPES,
-  ROUTES_TO_SCOPES_MAPPING,
-};
+export { SCOPES, ROUTES_TO_SCOPES_MAPPING };

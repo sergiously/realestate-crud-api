@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon --inspect=0.0.0.0:9229 --signal SIGINT --nolazy ./src/app.ts",
     "start": "node ./dist/app.js",
-    "build": "node build.js",
+    "build": "node ./build.js",
     "lint": "tslint -p tsconfig.json && prettier --write \"src/**/*.ts\"",
     "test": "jest --silent false --config jest.config.js --coverage --reporter=clover"
   },

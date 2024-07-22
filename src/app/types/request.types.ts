@@ -5,7 +5,6 @@ import type {
   CurrencyCode,
 } from './miscs.types';
 
-
 type LoginRequestBody = {
   clientId: string;
   clientSecret: string;
@@ -47,8 +46,7 @@ interface SearchPostsQueryParams extends SearchPostsFilterQueryParams {
   orderDirection: string;
   limit: number;
   offset: number;
-};
-
+}
 
 export {
   LoginRequestBody,

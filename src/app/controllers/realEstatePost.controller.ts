@@ -1,13 +1,8 @@
-import type {
-  Request,
-  Response,
-  NextFunction,
-} from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import type { SearchPostsQueryParams } from '../types/request.types';
 import type Post from '../datasource/models/post.model';
 import { INTERNAL_SERVER_ERROR_MESSAGE } from '../constants/errors.constants';
 import realEstateService from '../services/realEstate.service';
-
 
 /**
  * Gets a list of real estate postings with their details (filter, pagination and ordering based on search query params)
@@ -16,7 +11,11 @@ import realEstateService from '../services/realEstate.service';
  * @param res - Express response object
  * @param next - Express next function
  */
-const searchPosts = async (req: Request<{}, {}, {}, SearchPostsQueryParams | any>, res: Response, next: NextFunction) => {
+const searchPosts = async (
+  req: Request<{}, {}, {}, SearchPostsQueryParams | any>,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { query } = req;
 
@@ -36,7 +35,11 @@ const searchPosts = async (req: Request<{}, {}, {}, SearchPostsQueryParams | any
  * @param res - Express response object
  * @param next - Express next function
  */
-const getPost = async (req: Request<{ id: number }>, res: Response, next: NextFunction) => {
+const getPost = async (
+  req: Request<{ id: number }>,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { params } = req;
 
@@ -45,7 +48,9 @@ const getPost = async (req: Request<{ id: number }>, res: Response, next: NextFu
     if (realEstatePost?.isActive === true) {
       res.status(200).json(realEstatePost);
     } else if (realEstatePost?.isActive === false) {
-      console.warn('Attempted to retrieve a deleted post from "getPost" controller');
+      console.warn(
+        'Attempted to retrieve a deleted post from "getPost" controller',
+      );
       res.status(204);
     } else {
       res.status(204);
@@ -63,7 +68,11 @@ const getPost = async (req: Request<{ id: number }>, res: Response, next: NextFu
  * @param res - Express response object
  * @param next - Express next function
  */
-const createNewPost = async (req: Request<{}, {}, Post>, res: Response, next: NextFunction) => {
+const createNewPost = async (
+  req: Request<{}, {}, Post>,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { body } = req;
 
@@ -87,12 +96,13 @@ const createNewPost = async (req: Request<{}, {}, Post>, res: Response, next: Ne
  * @param res - Express response object
  * @param next - Express next function
  */
-const updatePost = async (req: Request<{ id: number }, {}, Post>, res: Response, next: NextFunction) => {
+const updatePost = async (
+  req: Request<{ id: number }, {}, Post>,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
-    const {
-      params,
-      body,
-    } = req;
+    const { params, body } = req;
 
     const isPostUpdated = await realEstateService.update(params.id, body);
 
@@ -114,7 +124,11 @@ const updatePost = async (req: Request<{ id: number }, {}, Post>, res: Response,
  * @param res - Express response object
  * @param next - Express next function
  */
-const softDeletePost = async (req: Request<{ id: number }>, res: Response, next: NextFunction) => {
+const softDeletePost = async (
+  req: Request<{ id: number }>,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
     const { params } = req;
 
@@ -131,11 +145,4 @@ const softDeletePost = async (req: Request<{ id: number }>, res: Response, next:
   }
 };
 
-
-export {
-  searchPosts,
-  getPost,
-  createNewPost,
-  updatePost,
-  softDeletePost,
-};
+export { searchPosts, getPost, createNewPost, updatePost, softDeletePost };

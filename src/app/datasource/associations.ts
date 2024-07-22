@@ -6,18 +6,17 @@ import PriceListing from './models/priceListing.model';
  * Models association definitions
  */
 const associations = () => {
-	Post.hasMany(PostStatus, {
+  Post.hasMany(PostStatus, {
     foreignKey: 'post_id',
     onDelete: 'CASCADE',
   });
-	PostStatus.belongsTo(Post);
+  PostStatus.belongsTo(Post);
 
   Post.hasMany(PriceListing, {
     foreignKey: 'post_id',
     onDelete: 'CASCADE',
   });
-	PriceListing.belongsTo(Post);
+  PriceListing.belongsTo(Post);
 };
-
 
 export default associations;

@@ -6,7 +6,7 @@ Basic backend API REST CRUD themed on real estate post listings
 
 ## Instructions
 - Install and run docker daemon
-- Clone repository `master` branch
+- Clone repository `main` branch
 - `cd` to the cloned repository directory
 - Run the following command: `docker-compose -f ./docker/docker-compose.yml up --build`
 - Once the containers are up and running, visit `http://localhost:8080/api-docs` on your browser to view API definitions

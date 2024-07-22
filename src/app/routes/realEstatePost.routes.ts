@@ -1,15 +1,11 @@
 import express from 'express';
-import type {
-  Request,
-  Response,
-  NextFunction
-} from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import {
   searchPosts,
   getPost,
   createNewPost,
   updatePost,
-  softDeletePost
+  softDeletePost,
 } from '../controllers/realEstatePost.controller';
 import {
   validateSearchPosts,

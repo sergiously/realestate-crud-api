@@ -11,7 +11,6 @@ import { joiParseError } from './app/middleware/joi';
 import { jwtHandler } from './app/middleware/jwt.middleware';
 import swaggerDocument from '../swagger.json';
 
-
 const app: Express = express();
 const PORT = config.get('port') || 3000;
 
@@ -27,7 +26,6 @@ app.use(joiParseError);
 
 console.info(`Starting database connections and API server on port ${PORT}...`);
 
-
 app.listen(PORT, async (): Promise<void> => {
   try {
     await sequelize.authenticate();
@@ -40,7 +38,7 @@ app.listen(PORT, async (): Promise<void> => {
       console.error('Could not connect to redis instance');
       process.exit(1);
     }
-    
+
     console.info(`Server running on port ${PORT}`);
   } catch (error) {
     console.error(error);

@@ -19,9 +19,8 @@ const POSTS_FIELDS_ALLOWED_TO_ORDER = [
   'hasPorch',
   'price',
   'createdAt',
-  'updatedAt'
+  'updatedAt',
 ];
-
 
 export {
   MAX_SAFE_SMALLINT,
@@ -33,4 +32,4 @@ export {
   DEFAULT_DATABASE_ORDER_DIRECTION,
   DEFAULT_DATABASE_LIMIT,
   DEFAULT_DATABASE_OFFSET,
-}
+};
