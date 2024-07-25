@@ -11,13 +11,13 @@ import { Sequelize } from 'sequelize';
  * Creates and instantiates a connection to the Database where real estate post listings are stored
  */
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  process.env.DB_NAME as string,
+  process.env.DB_USER as string,
+  process.env.DB_PASSWORD as string,
   {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
+    host: process.env.DB_HOST as string,
+    port: process.env.DB_PORT as any,
+    dialect: process.env.DB_DIALECT as any,
     pool: {
       max: 5,
       min: 0,

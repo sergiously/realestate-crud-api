@@ -78,7 +78,6 @@ Post.hasMany(PriceListing, {
 });
 PriceListing.belongsTo(Post, {
   foreignKey: 'post_id',
-  allowNull: false,
 });
 
 /*

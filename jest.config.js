@@ -4,7 +4,10 @@ module.exports = {
   injectGlobals: true,
   verbose: true,
   transform: {
-    '^.+\\.[tj]s$': 'ts-jest',
+    '^.+\\.[tj]s$': [
+      'ts-jest',
+      { tsconfig: './tsconfig.json' }
+    ],
   },
   coverageThreshold: {
     global: {
@@ -20,4 +23,5 @@ module.exports = {
     '!**/test/**/*.ts',
   ],
   testMatch: ['**/test/**/*.(test|spec).ts'],
+  setupFiles: ['<rootDir>/src/test/setEnvVars.js'],
 };

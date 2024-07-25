@@ -34,17 +34,17 @@
               "schema":{
                 "$ref":"#/components/schemas/Login"
               },
-              "examples": {
-                "Login as Admin": {
-                  "value": {
-                    "clientId": "E4Uzsjr1DNYIT3k50bxB5jEfO56WzgWh",
-                    "clientSecret": "Yu2xFzldqavqCxOcfrzg4oud2LmrnL9FO9HOhlAWDBh1lV9kjUvtnquogX9EhcY1"
+              "examples":{
+                "Login as Admin":{
+                  "value":{
+                    "clientId":"E4Uzsjr1DNYIT3k50bxB5jEfO56WzgWh",
+                    "clientSecret":"Yu2xFzldqavqCxOcfrzg4oud2LmrnL9FO9HOhlAWDBh1lV9kjUvtnquogX9EhcY1"
                   }
                 },
-                "Login as read-only user": {
-                  "value": {
-                    "clientId": "sD5lnJ8Uz6dfdqFhxyVJc1pFnxBjGIDq",
-                    "clientSecret": "kFvZkcTui6icniNuRv1rNBFzUQ5VcmI1Jgy4Cz25bG9DC3xBNhSGakXWdMNlWNEG"
+                "Login as read-only user":{
+                  "value":{
+                    "clientId":"sD5lnJ8Uz6dfdqFhxyVJc1pFnxBjGIDq",
+                    "clientSecret":"kFvZkcTui6icniNuRv1rNBFzUQ5VcmI1Jgy4Cz25bG9DC3xBNhSGakXWdMNlWNEG"
                   }
                 }
               }
@@ -60,24 +60,24 @@
                 "schema":{
                   "$ref":"#/components/schemas/LoginResponseSuccess"
                 },
-                "examples": {
-                  "Login as Admin": {
-                    "value": {
-                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwic2NvcGVzIjpbInJlYWQucmVhbC1lc3RhdGUtcG9zdCIsIndyaXRlLnJlYWwtZXN0YXRlLXBvc3QiXSwiaWF0IjoxNzIwOTc0MTM2LCJleHAiOjE3MjA5NzUwMzYsInN1YiI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwianRpIjoiMTcyMDk3NDEzNjU4MCJ9.dkMHdi2bBDbudPp5VWz00E7W3i-7TkbIm3l4cJSncks",
-                      "scopes": [
-                          "read.real-estate-post",
-                          "write.real-estate-post"
+                "examples":{
+                  "Login as Admin":{
+                    "value":{
+                      "accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwic2NvcGVzIjpbInJlYWQucmVhbC1lc3RhdGUtcG9zdCIsIndyaXRlLnJlYWwtZXN0YXRlLXBvc3QiXSwiaWF0IjoxNzIwOTc0MTM2LCJleHAiOjE3MjA5NzUwMzYsInN1YiI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwianRpIjoiMTcyMDk3NDEzNjU4MCJ9.dkMHdi2bBDbudPp5VWz00E7W3i-7TkbIm3l4cJSncks",
+                      "scopes":[
+                        "read.real-estate-post",
+                        "write.real-estate-post"
                       ],
-                      "expiresIn": "900000"
+                      "expiresIn":"900000"
                     }
                   },
-                  "Login as read-only user": {
-                    "value": {
-                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwic2NvcGVzIjpbInJlYWQucmVhbC1lc3RhdGUtcG9zdCIsIndyaXRlLnJlYWwtZXN0YXRlLXBvc3QiXSwiaWF0IjoxNzIwOTc0MTM2LCJleHAiOjE3MjA5NzUwMzYsInN1YiI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwianRpIjoiMTcyMDk3NDEzNjU4MCJ9.dkMHdi2bBDbudPp5VWz00E7W3i-7TkbIm3l4cJSncks",
-                      "scopes": [
-                          "read.real-estate-post"
+                  "Login as read-only user":{
+                    "value":{
+                      "accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwic2NvcGVzIjpbInJlYWQucmVhbC1lc3RhdGUtcG9zdCIsIndyaXRlLnJlYWwtZXN0YXRlLXBvc3QiXSwiaWF0IjoxNzIwOTc0MTM2LCJleHAiOjE3MjA5NzUwMzYsInN1YiI6IkU0VXpzanIxRE5ZSVQzazUwYnhCNWpFZk81Nld6Z1doIiwianRpIjoiMTcyMDk3NDEzNjU4MCJ9.dkMHdi2bBDbudPp5VWz00E7W3i-7TkbIm3l4cJSncks",
+                      "scopes":[
+                        "read.real-estate-post"
                       ],
-                      "expiresIn": "900000"
+                      "expiresIn":"900000"
                     }
                   }
                 }
@@ -92,9 +92,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Invalid request"
+                "example":{
+                  "value":{
+                    "message":"Invalid request"
                   }
                 }
               }
@@ -108,9 +108,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Invalid credentials"
+                "example":{
+                  "value":{
+                    "message":"Invalid credentials"
                   }
                 }
               }
@@ -124,9 +124,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/Error"
                 },
-                "example": {
-                  "value": {
-                    "message": "Internal server error"
+                "example":{
+                  "value":{
+                    "message":"Internal server error"
                   }
                 }
               }
@@ -142,7 +142,9 @@
         "operationId":"logout",
         "security":[
           {
-            "BearerAuth": []
+            "BearerAuth":[
+              
+            ]
           }
         ],
         "responses":{
@@ -154,9 +156,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Token invalidated successfully"
+                "example":{
+                  "value":{
+                    "message":"Token invalidated successfully"
                   }
                 }
               }
@@ -170,25 +172,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Unauthorized"
-                  }
-                }
-              }
-            }
-          },
-          "422":{
-            "summary":"Logout failed response",
-            "description":"Logout failed response (could not invalidate bearer token)",
-            "content":{
-              "application/json":{
-                "schema":{
-                  "$ref":"#/components/schemas/GenericResponse"
-                },
-                "example": {
-                  "value": {
-                    "message": "Could not invalidate bearer token"
+                "example":{
+                  "value":{
+                    "message":"Unauthorized"
                   }
                 }
               }
@@ -202,9 +188,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/Error"
                 },
-                "example": {
-                  "value": {
-                    "message": "Internal server error"
+                "example":{
+                  "value":{
+                    "message":"Internal server error"
                   }
                 }
               }
@@ -220,7 +206,9 @@
         "operationId":"searchPosts",
         "security":[
           {
-            "BearerAuth": []
+            "BearerAuth":[
+              
+            ]
           }
         ],
         "parameters":[
@@ -234,7 +222,7 @@
               "minLength":1,
               "maxLength":255
             },
-            "example": "house"
+            "example":"house"
           },
           {
             "name":"addressLike",
@@ -246,7 +234,7 @@
               "minLength":1,
               "maxLength":255
             },
-            "example": "Plomer"
+            "example":"Plomer"
           },
           {
             "name":"minSquareMeters",
@@ -259,7 +247,7 @@
               "minimum":1,
               "maximum":32767
             },
-            "example": 100
+            "example":100
           },
           {
             "name":"maxSquareMeters",
@@ -272,7 +260,7 @@
               "minimum":1,
               "maximum":32767
             },
-            "example": 300
+            "example":300
           },
           {
             "name":"bedrooms",
@@ -285,7 +273,7 @@
               "minimum":1,
               "maximum":32767
             },
-            "example": 2
+            "example":2
           },
           {
             "name":"minBedrooms",
@@ -298,7 +286,7 @@
               "minimum":1,
               "maximum":32767
             },
-            "example": 2
+            "example":2
           },
           {
             "name":"bathrooms",
@@ -311,7 +299,7 @@
               "minimum":1,
               "maximum":32767
             },
-            "example": 1
+            "example":1
           },
           {
             "name":"minBathrooms",
@@ -324,7 +312,7 @@
               "minimum":1,
               "maximum":32767
             },
-            "example": 1
+            "example":1
           },
           {
             "name":"minLifeQualityIndex",
@@ -337,7 +325,7 @@
               "minimum":0,
               "maximum":10
             },
-            "example": 6.5
+            "example":6.5
           },
           {
             "name":"maxLifeQualityIndex",
@@ -350,7 +338,7 @@
               "minimum":0,
               "maximum":10
             },
-            "example": 8
+            "example":8
           },
           {
             "name":"hasPorch",
@@ -360,7 +348,7 @@
             "schema":{
               "type":"boolean"
             },
-            "example": false
+            "example":false
           },
           {
             "name":"poolType",
@@ -378,7 +366,7 @@
                 ]
               }
             },
-            "example": "own,community"
+            "example":"own,community"
           },
           {
             "name":"barbequeArea",
@@ -396,7 +384,7 @@
                 ]
               }
             },
-            "example": "own,community"
+            "example":"own,community"
           },
           {
             "name":"parkingSpace",
@@ -414,7 +402,7 @@
                 ]
               }
             },
-            "example": "none"
+            "example":"none"
           },
           {
             "name":"minCreatedAt",
@@ -425,7 +413,7 @@
               "type":"string",
               "format":"date-time"
             },
-            "example": "2024-02-14T00:00:03.000Z"
+            "example":"2024-02-14T00:00:03.000Z"
           },
           {
             "name":"maxCreatedAt",
@@ -436,7 +424,7 @@
               "type":"string",
               "format":"date-time"
             },
-            "example": "2024-05-03T00:00:03.000Z"
+            "example":"2024-05-03T00:00:03.000Z"
           },
           {
             "name":"minUpdatedAt",
@@ -447,7 +435,7 @@
               "type":"string",
               "format":"date-time"
             },
-            "example": "2024-02-14T00:00:03.000Z"
+            "example":"2024-02-14T00:00:03.000Z"
           },
           {
             "name":"maxUpdatedAt",
@@ -458,7 +446,7 @@
               "type":"string",
               "format":"date-time"
             },
-            "example": "2024-05-03T00:00:03.000Z"
+            "example":"2024-05-03T00:00:03.000Z"
           },
           {
             "name":"status",
@@ -476,7 +464,7 @@
                 ]
               }
             },
-            "example": "ON_SALE"
+            "example":"ON_SALE"
           },
           {
             "name":"currency",
@@ -494,7 +482,7 @@
                 ]
               }
             },
-            "example": "USD"
+            "example":"USD"
           },
           {
             "name":"minPrice",
@@ -507,7 +495,7 @@
               "minimum":0,
               "maximum":9999999999.99
             },
-            "example": 75000
+            "example":75000
           },
           {
             "name":"maxPrice",
@@ -520,7 +508,7 @@
               "minimum":0,
               "maximum":9999999999.99
             },
-            "example": 125000
+            "example":125000
           },
           {
             "name":"limit",
@@ -533,7 +521,7 @@
               "minimum":1,
               "maximum":100
             },
-            "example": 10
+            "example":10
           },
           {
             "name":"offset",
@@ -545,7 +533,7 @@
               "format":"int32",
               "minimum":0
             },
-            "example": 0
+            "example":0
           },
           {
             "name":"order_by",
@@ -567,7 +555,7 @@
                 "updatedAt"
               ]
             },
-            "example": "createdAt"
+            "example":"createdAt"
           },
           {
             "name":"order_direction",
@@ -581,7 +569,7 @@
                 "desc"
               ]
             },
-            "example": "desc"
+            "example":"desc"
           }
         ],
         "responses":{
@@ -593,72 +581,74 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "examples": {
-                  "Example successful response with limit 3": {
-                    "value": {
-                      "results": [
-                          {
-                              "id": 2,
-                              "title": "House in General Las Heras",
-                              "address": "Neumi Buzzi 46, General Las Heras, Buenos Aires, Argentina",
-                              "squareMeters": 240,
-                              "bedrooms": 2,
-                              "bathrooms": 1,
-                              "lifeQualityIndex": 6.55,
-                              "hasPorch": true,
-                              "poolType": "none",
-                              "barbequeArea": "none",
-                              "parkingSpace": "driveway",
-                              "status": "SOLD",
-                              "price": 47000,
-                              "currency": "USD",
-                              "created_at": "2024-02-15T16:29:03.000Z",
-                              "updated_at": null
-                          },
-                          {
-                              "id": 1,
-                              "title": "Recreational house in Plomer, Buenos Aires (village located along route 6)",
-                              "address": "Los Alamos 300, Plomer, General Las Heras, Buenos Aires, Argentina",
-                              "squareMeters": 1600,
-                              "bedrooms": 3,
-                              "bathrooms": 1,
-                              "lifeQualityIndex": 6.28,
-                              "hasPorch": true,
-                              "poolType": "own",
-                              "barbequeArea": "none",
-                              "parkingSpace": "driveway",
-                              "status": "ON_SALE",
-                              "price": 100000,
-                              "currency": "USD",
-                              "created_at": "2024-02-08T17:09:02.000Z",
-                              "updated_at": null
-                          },
-                          {
-                              "id": 3,
-                              "title": "2 dorm house on sale with pool + guest house in Villars",
-                              "address": "España 400, Villars, General Las Heras, Buenos Aires, Argentina",
-                              "squareMeters": 280,
-                              "bedrooms": 4,
-                              "bathrooms": 3,
-                              "lifeQualityIndex": 6.3,
-                              "hasPorch": true,
-                              "poolType": "own",
-                              "barbequeArea": "own",
-                              "parkingSpace": "driveway",
-                              "status": "ON_HOLD",
-                              "price": 95000,
-                              "currency": "USD",
-                              "created_at": "2024-01-05T22:27:20.000Z",
-                              "updated_at": null
-                          }
+                "examples":{
+                  "Example successful response with limit 3":{
+                    "value":{
+                      "results":[
+                        {
+                          "id":2,
+                          "title":"House in General Las Heras",
+                          "address":"Neumi Buzzi 46, General Las Heras, Buenos Aires, Argentina",
+                          "squareMeters":240,
+                          "bedrooms":2,
+                          "bathrooms":1,
+                          "lifeQualityIndex":6.55,
+                          "hasPorch":true,
+                          "poolType":"none",
+                          "barbequeArea":"none",
+                          "parkingSpace":"driveway",
+                          "status":"SOLD",
+                          "price":47000,
+                          "currency":"USD",
+                          "created_at":"2024-02-15T16:29:03.000Z",
+                          "updated_at":null
+                        },
+                        {
+                          "id":1,
+                          "title":"Recreational house in Plomer, Buenos Aires (village located along route 6)",
+                          "address":"Los Alamos 300, Plomer, General Las Heras, Buenos Aires, Argentina",
+                          "squareMeters":1600,
+                          "bedrooms":3,
+                          "bathrooms":1,
+                          "lifeQualityIndex":6.28,
+                          "hasPorch":true,
+                          "poolType":"own",
+                          "barbequeArea":"none",
+                          "parkingSpace":"driveway",
+                          "status":"ON_SALE",
+                          "price":100000,
+                          "currency":"USD",
+                          "created_at":"2024-02-08T17:09:02.000Z",
+                          "updated_at":null
+                        },
+                        {
+                          "id":3,
+                          "title":"2 dorm house on sale with pool + guest house in Villars",
+                          "address":"España 400, Villars, General Las Heras, Buenos Aires, Argentina",
+                          "squareMeters":280,
+                          "bedrooms":4,
+                          "bathrooms":3,
+                          "lifeQualityIndex":6.3,
+                          "hasPorch":true,
+                          "poolType":"own",
+                          "barbequeArea":"own",
+                          "parkingSpace":"driveway",
+                          "status":"ON_HOLD",
+                          "price":95000,
+                          "currency":"USD",
+                          "created_at":"2024-01-05T22:27:20.000Z",
+                          "updated_at":null
+                        }
                       ],
-                      "total": 39
+                      "total":39
                     }
                   },
-                  "Example successful no-results response": {
-                    "value": {
-                      "results": [],
-                      "total": 0
+                  "Example successful no-results response":{
+                    "value":{
+                      "results":[
+                        
+                      ],
+                      "total":0
                     }
                   }
                 }
@@ -673,9 +663,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Invalid request"
+                "example":{
+                  "value":{
+                    "message":"Invalid request"
                   }
                 }
               }
@@ -689,9 +679,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Unauthorized"
+                "example":{
+                  "value":{
+                    "message":"Unauthorized"
                   }
                 }
               }
@@ -705,9 +695,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/Error"
                 },
-                "example": {
-                  "value": {
-                    "message": "Internal server error"
+                "example":{
+                  "value":{
+                    "message":"Internal server error"
                   }
                 }
               }
@@ -721,7 +711,9 @@
         "operationId":"createNewPost",
         "security":[
           {
-            "BearerAuth": []
+            "BearerAuth":[
+              
+            ]
           }
         ],
         "requestBody":{
@@ -765,25 +757,25 @@
                 "schema":{
                   "$ref":"#/components/schemas/SinglePostResponse"
                 },
-                "examples": {
-                  "House1": {
-                    "id": 4,
-                    "title": "House with pool and barbeque area - Las Heras, Buenos Aires countryside",
-                    "address": "Dorrego 1023, General Las Heras, Buenos Aires, Argentina",
-                    "squareMeters": 100,
-                    "bedrooms": 3,
-                    "bathrooms": 1,
-                    "lifeQualityIndex": 6.33,
-                    "hasPorch": true,
-                    "poolType": "own",
-                    "barbequeArea": "own",
-                    "parkingSpace": "driveway",
-                    "status": "ON_SALE",
-                    "price": 85000,
-                    "currency": "USD",
-                    "updated_at": "2024-07-14T23:06:53.862Z",
-                    "created_at": "2024-07-14T23:06:53.862Z",
-                    "isActive": true
+                "examples":{
+                  "House1":{
+                    "id":4,
+                    "title":"House with pool and barbeque area - Las Heras, Buenos Aires countryside",
+                    "address":"Dorrego 1023, General Las Heras, Buenos Aires, Argentina",
+                    "squareMeters":100,
+                    "bedrooms":3,
+                    "bathrooms":1,
+                    "lifeQualityIndex":6.33,
+                    "hasPorch":true,
+                    "poolType":"own",
+                    "barbequeArea":"own",
+                    "parkingSpace":"driveway",
+                    "status":"ON_SALE",
+                    "price":85000,
+                    "currency":"USD",
+                    "updated_at":"2024-07-14T23:06:53.862Z",
+                    "created_at":"2024-07-14T23:06:53.862Z",
+                    "isActive":true
                   }
                 }
               }
@@ -797,9 +789,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Invalid request"
+                "example":{
+                  "value":{
+                    "message":"Invalid request"
                   }
                 }
               }
@@ -813,9 +805,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Could not create post"
+                "example":{
+                  "value":{
+                    "message":"Could not create post"
                   }
                 }
               }
@@ -829,9 +821,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/Error"
                 },
-                "example": {
-                  "value": {
-                    "message": "Internal server error"
+                "example":{
+                  "value":{
+                    "message":"Internal server error"
                   }
                 }
               }
@@ -847,7 +839,9 @@
         "operationId":"getPost",
         "security":[
           {
-            "BearerAuth": []
+            "BearerAuth":[
+              
+            ]
           }
         ],
         "parameters":{
@@ -859,7 +853,7 @@
             "type":"integer",
             "format":"int32"
           },
-          "example": 2
+          "example":2
         },
         "responses":{
           "200":{
@@ -870,25 +864,25 @@
                 "schema":{
                   "$ref":"#/components/schemas/SinglePostResponse"
                 },
-                "examples": {
-                  "House1": {
-                    "id": 4,
-                    "title": "House with pool and barbeque area - Las Heras, Buenos Aires countryside",
-                    "address": "Dorrego 1023, General Las Heras, Buenos Aires, Argentina",
-                    "squareMeters": 100,
-                    "bedrooms": 3,
-                    "bathrooms": 1,
-                    "lifeQualityIndex": 6.33,
-                    "hasPorch": true,
-                    "poolType": "own",
-                    "barbequeArea": "own",
-                    "parkingSpace": "driveway",
-                    "status": "ON_SALE",
-                    "price": 85000,
-                    "currency": "USD",
-                    "updated_at": "2024-07-14T23:06:53.862Z",
-                    "created_at": "2024-07-14T23:06:53.862Z",
-                    "isActive": true
+                "examples":{
+                  "House1":{
+                    "id":4,
+                    "title":"House with pool and barbeque area - Las Heras, Buenos Aires countryside",
+                    "address":"Dorrego 1023, General Las Heras, Buenos Aires, Argentina",
+                    "squareMeters":100,
+                    "bedrooms":3,
+                    "bathrooms":1,
+                    "lifeQualityIndex":6.33,
+                    "hasPorch":true,
+                    "poolType":"own",
+                    "barbequeArea":"own",
+                    "parkingSpace":"driveway",
+                    "status":"ON_SALE",
+                    "price":85000,
+                    "currency":"USD",
+                    "updated_at":"2024-07-14T23:06:53.862Z",
+                    "created_at":"2024-07-14T23:06:53.862Z",
+                    "isActive":true
                   }
                 }
               }
@@ -906,9 +900,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Invalid request"
+                "example":{
+                  "value":{
+                    "message":"Invalid request"
                   }
                 }
               }
@@ -933,7 +927,9 @@
         "operationId":"updatePost",
         "security":[
           {
-            "BearerAuth": []
+            "BearerAuth":[
+              
+            ]
           }
         ],
         "parameters":{
@@ -980,9 +976,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Post updated successfully"
+                "example":{
+                  "value":{
+                    "message":"Post updated successfully"
                   }
                 }
               }
@@ -996,9 +992,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Invalid request"
+                "example":{
+                  "value":{
+                    "message":"Invalid request"
                   }
                 }
               }
@@ -1012,9 +1008,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Could not update post"
+                "example":{
+                  "value":{
+                    "message":"Could not update post"
                   }
                 }
               }
@@ -1039,7 +1035,9 @@
         "operationId":"softDeletePost",
         "security":[
           {
-            "BearerAuth": []
+            "BearerAuth":[
+              
+            ]
           }
         ],
         "parameters":{
@@ -1061,9 +1059,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Post deleted successfully"
+                "example":{
+                  "value":{
+                    "message":"Post deleted successfully"
                   }
                 }
               }
@@ -1077,9 +1075,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Invalid request"
+                "example":{
+                  "value":{
+                    "message":"Invalid request"
                   }
                 }
               }
@@ -1093,9 +1091,9 @@
                 "schema":{
                   "$ref":"#/components/schemas/GenericResponse"
                 },
-                "example": {
-                  "value": {
-                    "message": "Could not delete post"
+                "example":{
+                  "value":{
+                    "message":"Could not delete post"
                   }
                 }
               }
@@ -1117,15 +1115,15 @@
     }
   },
   "components":{
-    "securitySchemes": {
-        "BearerAuth": {
-            "name": "Authorization",
-            "in": "header",
-            "type": "apiKey",
-            "scheme": "bearer",
-            "bearerFormat": "JWT",
-            "description": "Enter your bearer token in the format Bearer <token>"
-        }
+    "securitySchemes":{
+      "BearerAuth":{
+        "name":"Authorization",
+        "in":"header",
+        "type":"apiKey",
+        "scheme":"bearer",
+        "bearerFormat":"JWT",
+        "description":"Enter your bearer token in the format Bearer <token>"
+      }
     },
     "schemas":{
       "Login":{
@@ -1366,7 +1364,7 @@
           }
         }
       },
-      "SinglePostResponse": {
+      "SinglePostResponse":{
         "type":"object",
         "required":[
           "id",
@@ -1389,9 +1387,9 @@
         ],
         "properties":{
           "id":{
-            "type": "integer",
-            "format": "int32",
-            "description": "ID of real estate post listing"
+            "type":"integer",
+            "format":"int32",
+            "description":"ID of real estate post listing"
           },
           "title":{
             "type":"string",
@@ -1485,9 +1483,9 @@
             "format":"date-time",
             "description":"ISO datetime of the last update datetime of the real estate post listing"
           },
-          "isActive": {
-            "type": "boolean",
-            "description": "Condition indicating if the real estate post listing is an active record (not being soft-deleted)"
+          "isActive":{
+            "type":"boolean",
+            "description":"Condition indicating if the real estate post listing is an active record (not being soft-deleted)"
           }
         }
       },

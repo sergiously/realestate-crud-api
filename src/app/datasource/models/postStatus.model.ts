@@ -70,7 +70,6 @@ Post.hasMany(PostStatus, {
 });
 PostStatus.belongsTo(Post, {
   foreignKey: 'post_id',
-  allowNull: false,
 });
 
 /*
