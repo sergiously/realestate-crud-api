@@ -33,8 +33,6 @@ Based on Node.js with Typescript, with deployment using Docker. Main libraries a
 ## Credits
 
 Developed by Sergio N. Raggio
-- Thanks to the folks at [NaranjaX](https://www.naranjax.com/) for being my first (and current) experience working with AWS with a talented team
-- Many thanks to [FreeCodeCamp](https://www.freecodecamp.org) for helping me boost my knowledge of the technologies used in this project
 
 ## License
 

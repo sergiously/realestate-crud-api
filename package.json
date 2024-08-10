@@ -15,12 +15,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/sergiously-templates/realestate-api-crud/ts-postgresql-local.git"
+    "url": "git+https://github.com/sergiously/realestate-crud-api.git"
   },
-  "bugs": {
-    "url": "https://gitlab.com/sergiously-templates/realestate-api-crud/ts-postgresql-local/issues"
-  },
-  "homepage": "https://gitlab.com/sergiously-templates/realestate-api-crud/ts-postgresql-local#readme",
+  "homepage": "https://github.com/sergiously/realestate-crud-api#readme",
   "files": [
     "dist/*"
   ],
