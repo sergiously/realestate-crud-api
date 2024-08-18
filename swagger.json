@@ -1051,21 +1051,9 @@
           }
         },
         "responses":{
-          "200":{
+          "204":{
             "summary":"real estate post listing soft deleted successfully",
-            "description":"real estate post listing was soft deleted successfully (marked as inactive)",
-            "content":{
-              "application/json":{
-                "schema":{
-                  "$ref":"#/components/schemas/GenericResponse"
-                },
-                "example":{
-                  "value":{
-                    "message":"Post deleted successfully"
-                  }
-                }
-              }
-            }
+            "description":"real estate post listing was soft deleted successfully (marked as inactive)"
           },
           "400":{
             "summary":"Invalid path param",

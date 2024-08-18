@@ -135,7 +135,7 @@ const softDeletePost = async (
     const isPostDeleted = await realEstateService.softDelete(params.id);
 
     if (isPostDeleted) {
-      res.status(200).json({ message: 'Post deleted successfully' });
+      res.status(204);
     } else {
       res.status(422).json({ message: 'Could not delete post' });
     }

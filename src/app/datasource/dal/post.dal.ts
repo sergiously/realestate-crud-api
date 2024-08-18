@@ -66,16 +66,16 @@ const getAllActiveWithStatusAndPrice = async (
       ...(filters?.barbequeArea && { barbequeArea: filters.barbequeArea }),
       ...(filters?.parkingSpace && { parkingSpace: filters.parkingSpace }),
       ...(filters?.minCreatedAt && {
-        createdAt: { [Op.gte]: filters.minCreatedAt },
+        created_at: { [Op.gte]: filters.minCreatedAt },
       }),
       ...(filters?.maxCreatedAt && {
-        createdAt: { [Op.lte]: filters.maxCreatedAt },
+        created_at: { [Op.lte]: filters.maxCreatedAt },
       }),
       ...(filters?.minUpdatedAt && {
-        updatedAt: { [Op.gte]: filters.minUpdatedAt },
+        updated_at: { [Op.gte]: filters.minUpdatedAt },
       }),
       ...(filters?.maxUpdatedAt && {
-        updatedAt: { [Op.lte]: filters.maxUpdatedAt },
+        updated_at: { [Op.lte]: filters.maxUpdatedAt },
       }),
       ...(filters?.status && { status: filters.status }),
       ...(filters?.currency && { currency: filters.currency }),
